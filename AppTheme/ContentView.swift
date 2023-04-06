@@ -34,6 +34,24 @@ struct ContentView: View {
             }
             .transition(.opacity.animation(.easeIn(duration: 5)))
             .theme(current == .happy ? .happy : .sad)
+
+            VStack {
+                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
+                    .titleStyle(.vertical)
+
+                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
+                    .titleStyle(.horizontal)
+            }
+
+            Divider()
+
+            VStack {
+                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
+                Spacer()
+                    .frame(height: 10)
+                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
+            }
+            .titleStyle(.vertical)
         }
         .padding()
     }
