@@ -1,64 +1,58 @@
 import SwiftUI
 
 public struct Theme {
-    public let button: Button
-    public let text: Text
+    public let primary: Color
+    public let secondary: Color
+    public let background: Color
 
-    public init(button: Button, text: Text) {
-        self.button = button
-        self.text = text
+    public init(primary: Color, secondary: Color, background: Color) {
+        self.primary = primary
+        self.secondary = secondary
+        self.background = background
     }
 }
 
 extension Theme {
-    static var `default`: Self {
+    static var blue: Theme {
         .init(
-            button: .init(
-                primary: .init(
-                    normal: .init(
-                        background: .red,
-                        border: .red,
-                        text: .white
-                    ),
-                    pressed: .init(
-                        background: .green,
-                        border: .green,
-                        text: .white
-                    ),
-                    disabled: .init(
-                        background: .blue,
-                        border: .blue,
-                        text: .white
-                    )
-                ),
-                secondary: .init(
-                    normal: .init(
-                        background: .white,
-                        border: .red,
-                        text: .black
-                    ),
-                    pressed: .init(
-                        background: .white,
-                        border: .green,
-                        text: .black
-                    ),
-                    disabled: .init(
-                        background: .white,
-                        border: .blue,
-                        text: .black
-                    )
-                )
-            ),
-            text: .init(
-                header: .init(
-                    font: .title,
-                    color: .accentColor
-                ),
-                body: .init(
-                    font: .body,
-                    color: .primary
-                )
-            )
+            primary: .blue,
+            secondary: .blue.opacity(0.8),
+            background: .white
         )
+    }
+
+    static var red: Theme {
+        .init(
+            primary: .red,
+            secondary: .red.opacity(0.8),
+            background: .white
+        )
+    }
+}
+
+struct Theme_Previews: PreviewProvider {
+    static var previews: some View {
+        let content = VStack {
+            Button("Hello world", action: {})
+            Button("Hello world", action: {})
+                .disabled(true)
+        }
+        .buttonStyle(.primary)
+
+        VStack {
+            VStack {
+                Text("Theme BLUE")
+                content
+            }
+            .theme(.blue)
+
+            Divider()
+
+            VStack {
+                Text("Theme RED")
+                content
+            }
+            .theme(.red)
+        }
     }
 }

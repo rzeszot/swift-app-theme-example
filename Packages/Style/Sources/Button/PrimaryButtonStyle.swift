@@ -1,17 +1,18 @@
 import SwiftUI
 
 public struct PrimaryButtonStyle: ButtonStyle {
-    @Environment(\.theme)
-    private var theme: Theme
+    @Environment(\.buttonConfig)
+    private var config: ButtonConfig
 
     @Environment(\.isEnabled)
     private var isEnabled: Bool
 
     public func makeBody(configuration: Configuration) -> some View {
-        let style = theme.button.primary
+        let style = config.primary
         let state = style.when(enable: isEnabled, press: configuration.isPressed)
 
         HStack {
+            Text(isEnabled ? "E" : "D")
             configuration.label
         }
         .foregroundColor(state.text)

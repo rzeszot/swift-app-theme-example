@@ -1,6 +1,6 @@
-import Foundation
+import SwiftUI
 
-extension Theme.Button {
+extension ButtonConfig {
     public struct Style {
         public let normal: State
         public let pressed: State

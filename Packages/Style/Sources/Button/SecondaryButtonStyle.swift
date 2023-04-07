@@ -1,14 +1,14 @@
 import SwiftUI
 
 public struct SecondaryButtonStyle: ButtonStyle {
-    @Environment(\.theme)
-    private var theme: Theme
+    @Environment(\.buttonConfig)
+    private var config: ButtonConfig
 
     @Environment(\.isEnabled)
     private var isEnabled: Bool
 
     public func makeBody(configuration: Configuration) -> some View {
-        let style = theme.button.secondary
+        let style = config.secondary
         let state = style.when(enable: isEnabled, press: configuration.isPressed)
 
         HStack {
@@ -37,7 +37,7 @@ struct SecondaryButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             VStack {
-                Button("Hello world 2", action: {})
+                Button("Hello world", action: {})
                 Button("Hello world", action: {})
                     .disabled(true)
             }

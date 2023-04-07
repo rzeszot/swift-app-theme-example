@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Theme.Button.Style {
+extension ButtonConfig.Style {
     public struct State {
         public let background: Color
         public let border: Color

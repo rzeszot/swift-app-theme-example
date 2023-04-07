@@ -11,25 +11,19 @@ let package = Package(
         .library(
             name: "Style",
             targets: [
-                "Style",
-                "Samples"
+                "Style"
             ]
         ),
-        .library(
-            name: "Samples",
-            targets: [
-                "Samples"
-            ]
-        )
+        .library(name: "Button", targets: ["Button"])
     ],
     targets: [
         .target(
-            name: "Style"
+            name: "Button"
         ),
         .target(
-            name: "Samples",
+            name: "Style",
             dependencies: [
-                "Style"
+                "Button"
             ]
         )
     ]
