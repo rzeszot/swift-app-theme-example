@@ -1,21 +1,20 @@
 import SwiftUI
 import Style
-import Samples
 
 struct ContentView: View {
-    enum Theme: Hashable {
+    enum CurrentTheme: Hashable {
         case happy
         case sad
     }
 
     @State
-    var current: Theme = .happy
+    var current: CurrentTheme = .happy
 
     var body: some View {
         VStack {
             Picker("Theme", selection: $current) {
-                Text("Happy").tag(Theme.happy)
-                Text("Sad").tag(Theme.sad)
+                Text("Happy").tag(CurrentTheme.happy)
+                Text("Sad").tag(CurrentTheme.sad)
             }
             .pickerStyle(.segmented)
 
@@ -23,10 +22,6 @@ struct ContentView: View {
                 .padding()
 
             VStack {
-                Text("Header!")
-                    .textStyle(.header)
-                Text("Lorem ipsum")
-                    .textStyle(.body)
                 Button("Primary", action: {})
                     .buttonStyle(.primary)
                 Button("Secondary", action: {})
@@ -34,24 +29,6 @@ struct ContentView: View {
             }
             .transition(.opacity.animation(.easeIn(duration: 5)))
             .theme(current == .happy ? .happy : .sad)
-
-            VStack {
-                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
-                    .titleStyle(.vertical)
-
-                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
-                    .titleStyle(.horizontal)
-            }
-
-            Divider()
-
-            VStack {
-                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
-                Spacer()
-                    .frame(height: 10)
-                Title(title: Text("Title component"), icon: Image(systemName: "xmark"))
-            }
-            .titleStyle(.vertical)
         }
         .padding()
     }
